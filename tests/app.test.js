@@ -1,14 +1,15 @@
-const request = require('supertest');
-const app = require('../index');
+const request = require("supertest");
+const { app, server } = require("../index"); // Import both app and server
 
-describe('GET /', () => {
-    it('should return Hello, World!', async () => {
-        const res = await request(app).get('/');
-        expect(res.statusCode).toBe(200);
-        expect(res.text).toBe('Hello, World!');
-    });
+describe("GET /", () => {
+  it("should return Hello, World!", async () => {
+    const response = await request(app).get("/");
+    expect(response.status).toBe(200);
+    expect(response.text).toBe("Hello, World!");
+  });
 });
 
-afterAll(() => {
-    app.close(); // Ensure the server is closed after tests
-  });
+// Close server after tests
+afterAll((done) => {
+  server.close(done);
+});
