@@ -8,3 +8,7 @@ describe('GET /', () => {
         expect(res.text).toBe('Hello, World!');
     });
 });
+
+afterAll(() => {
+    app.close(); // Ensure the server is closed after tests
+  });

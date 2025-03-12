@@ -29,7 +29,7 @@ jobs:
         run: npm ci
 
       - name: Fix Jest permissions
-        run: chmod +x node_modules/.bin/jest || true
+        run: chmod +x node_modules/.bin/jest
 
-      - name: Run tests
-        run: npx jest --ci --runInBand
+      - name: Run tests with debug mode
+        run: npx jest --ci --runInBand --detectOpenHandles --forceExit
